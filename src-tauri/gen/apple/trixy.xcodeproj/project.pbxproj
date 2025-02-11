@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C8EF452E34F6C8E54476BC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89343C5E35D091FD40B772BA /* Assets.xcassets */; };
+		0C9FE1278D9E6455DF44C21D /* libapp.a in Resources */ = {isa = PBXBuildFile; fileRef = E32E54E65929C8DBF992258B /* libapp.a */; };
 		15F003E9949070DFA7652D00 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4010CD894A552B87472D3804 /* Metal.framework */; };
 		18A3FF2A7CF46FB0AD7C6744 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837326BFB7D7FD67C902FDD0 /* UIKit.framework */; };
 		1A949E0BCB3C36E3763E91AB /* libapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54EE812C7F7A226862EA4EF5 /* libapp.a */; };
@@ -39,6 +40,7 @@
 		AD3B3E5E71F7899E5AED24BE /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		C715E73FAB35AF589C48E382 /* trixy_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = trixy_iOS.entitlements; sourceTree = "<group>"; };
 		D9173C41BF69980514797C32 /* trixy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trixy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32E54E65929C8DBF992258B /* libapp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libapp.a; sourceTree = "<group>"; };
 		E9A75C3C4B6891C972107689 /* lib.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = lib.rs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 		269E5836C3823EEFA107AD50 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				E38B4CDDB0CAD516D5E7EC5C /* x86_64 */,
 			);
 			path = Externals;
 			sourceTree = "<group>";
@@ -96,6 +99,14 @@
 				8F976F73FF9BC4E98CCFE192 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6260CD2F9200AECC4AC03B93 /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				E32E54E65929C8DBF992258B /* libapp.a */,
+			);
+			path = debug;
 			sourceTree = "<group>";
 		};
 		6C6A76A34A9ECC4F0BF6B216 /* src */ = {
@@ -141,6 +152,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		E38B4CDDB0CAD516D5E7EC5C /* x86_64 */ = {
+			isa = PBXGroup;
+			children = (
+				6260CD2F9200AECC4AC03B93 /* debug */,
+			);
+			path = x86_64;
+			sourceTree = "<group>";
+		};
 		FFBB0A938F17F9E22A6DF52D /* trixy_iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1430;
 			};
 			buildConfigurationList = A97025257AD7CB1608567583 /* Build configuration list for PBXProject "trixy" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -205,6 +224,7 @@
 				0C8EF452E34F6C8E54476BC4 /* Assets.xcassets in Resources */,
 				7DCDA488DF28E184AD40C002 /* LaunchScreen.storyboard in Resources */,
 				9800FA73F3674574B374B9DE /* assets in Resources */,
+				0C9FE1278D9E6455DF44C21D /* libapp.a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +304,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -307,10 +326,14 @@
 		20D2530AFF0C78198E7C2EC0 /* debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = (
+					arm64,
+					x86_64,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = trixy_iOS/trixy_iOS.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = K6F88GN9NT;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
@@ -347,7 +370,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trixy.app;
 				PRODUCT_NAME = trixy;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  x86_64";
@@ -357,10 +379,14 @@
 		6F82DE499D30CAE79954C6DA /* release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ARCHS = (
+					arm64,
+					x86_64,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = trixy_iOS/trixy_iOS.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = K6F88GN9NT;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "arm64-sim x86_64";
@@ -397,7 +423,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.trixy.app;
 				PRODUCT_NAME = trixy;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64  x86_64";
@@ -441,7 +466,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
